@@ -406,7 +406,7 @@ gentests "EventEmitter", (test, backend) ->
                     setTimeout(next, 0)
                 ,
                 (next) =>
-                    @emit 'data', new Buffer([01,00,02,0xff,00])
+                    @emit 'data', new Buffer([0o01,0o00,0o02,0xff,0o00])
                     setTimeout(next, 0)
                 ,
                 (next) =>
@@ -452,7 +452,7 @@ gentests "EventEmitter", (test, backend) ->
             (rv1, next) ->
                 rv2 = cached_emitter(1, "test2")
                 test.ok(rv2 instanceof TestEmitter, "not event emitter")
-                should_results = [ 'emitter run: 5', '\nsecond\n', new Buffer([01,00,02,0xff,00]), 23]
+                should_results = [ 'emitter run: 5', '\nsecond\n', new Buffer([0x01,0x00,0x02,0xff,0x00]), 23]
                 rv2.on 'data', (data) ->
                     test.equal(data, should_results.splice(0,1), "results differ")
                     console.log("got data", data)
